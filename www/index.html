@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+    <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="css/index.css" />
+
+    <title>Storage</title>
+</head>
+
+<body>
+
+    <div data-role="page" id="addStoraged">
+
+        <div data-role="header" data-position="fixed">
+
+            <h1>Add storage</h1>
+        </div>
+        <div data-role="main" class="ui-content">
+            <form action="">
+                <div class="ui-field-contain">
+                    
+                    <div class="ui-field-contain">
+                        <label for="storagetype">Storage type: </label>
+                        <select name="storagetype" id="storagetype" data-native-menu="true" >
+                            <option value="home">Home</option>
+                            <option value="business">Business</option>
+                            <option value="apartment ">Apartment </option>
+                        </select>
+                    </div>
+                    
+                    <div class="ui-field-contain">
+                        <label for="dimension">Dimensions in square meters: </label>
+                        <input type="number" id="dimension" name="dimension" data-clear-btn="true">
+                    </div>
+                    
+                    
+                    <div class="ui-field-contain">
+                        <label for="feature">Storage feature: </label>
+                        <select multiple="multiple" name="feature" data-native-menu="false" id="feature">
+                            <option value="">Choices:</option>
+                            <option value="private space">Private space</option>
+                            <option value="share space">Share space</option>
+                            <option value="cctv">CCTV</option>
+                            <option value="air conditioning">Air conditioning</option>
+                            <option value="storage for short term">Storage for short term</option>
+                            <option value="storage for long term">Storage for long term</option>
+                            <option value="collect & delivery service">Collect & delivery service</option>
+                        </select>
+                    </div>
+                    
+                    <div class="ui-field-contain">
+                        <label for="rent">Monthly rent price: </label>
+                        <input type="number" id="rent" name="rent" data-clear-btn="true">
+                    </div>
+                    
+                    <div class="ui-field-contain">
+                        <label for="reporter">Name of the reporter: </label>
+                        <input type="text" id="reporter" name="reporter" data-clear-btn="true">
+                    </div>
+                    <button>Add</button>
+                    
+                        <!-- <label for="btnAdd"></label> -->
+                    <!-- <a href="" class="ui-btn" id="btnAdd" onclick="addStorage()">Add</a> -->
+
+                    
+                </div>
+            </form>
+        </div>
+        <div data-role="footer"  data-position="fixed">
+            <!-- <h1>Footer text</h1> -->
+            <div data-role="navbar">
+                <ul>
+                    <li><a href="#addStoraged" data-role="button" >Add page</a></li>
+                    <li><a href="#loadStoraged" data-role="button" >Load page</a></li>
+                    <li><a href="#vibratebeep" data-role="button" >Vibrate</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    
+    <div data-role="page" id="loadStoraged">
+        
+        <div data-role="header" data-position="fixed">
+            <h1>Load storage</h1>
+        </div>
+
+        <div data-role="main" class="ui-content">
+            <form action="" class="ui-filtarable">
+                <input data-type="search" id="txtKeyword">
+            </form>
+            <ul data-role="listview" data-filter="true" data-input="#txtKeyword" data-inset="true" id="lstProducts"></ul>   
+        </div>
+
+        <div data-role="footer" data-position="fixed">
+            <div data-role="navbar">
+                <ul>
+                    <li><a href="#addStoraged" data-role="button" >Add page</a></li>
+                    <li><a href="#loadStoraged" data-role="button" >Load page</a></li>
+                    <li><a href="#vibratebeep" data-role="button" >Vibrate</a></li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+    
+    <!-- <div data-role="dialog" id="deletetanle">
+        <div data-role="header">
+            <h1>Delete</h1>
+        </div>
+        <div data-role="main" class="ui-content">
+            <form>
+                <div class="ui-field-contain">
+                    <button>Delete table</button>
+                </div>
+            </form>
+        </div>
+    </div>    -->
+
+    <div data-role="dialog" id="addnote">
+        <div data-role="header">
+            <h1>Add Note</h1>
+        </div>
+        <div data-role="main" class="ui-content">
+            <form>
+                <div class="ui-field-contain">
+                    <input disabled="disabled" type="hidden" id="_idn" name="_idn">
+                    <div class="ui-field-contain">
+                        <label for="newNote">Note: </label>
+                        <textarea name="newNote" id="newNote" ></textarea>
+                    </div>
+                    
+                    <label for="btnAddNote"></label>
+                    <!-- <a class="ui-btn ui-icon-plus ui-btn-icon-left" id="btnAddNote" onclick="addNote()">Add note</a> -->
+                    <button>Add note</button>
+                </div>
+            </form>
+        </div>
+    </div>    
+
+    <div data-role="dialog" id="updatedialog">
+        <div data-role="header">
+            <h1>Update</h1>
+        </div>
+        <div data-role="main" class="ui-content">
+            <form>
+                <div class="ui-field-contain" id="lstLoad">
+
+                    <label for="newStoragetype">Storage type: </label>
+                    <select id="newStoragetype" name="newStoragetype">
+                            <option value="home">Home</option>
+                            <option value="business">Business</option>
+                            <option value="apartment ">Apartment </option>
+                    </select>
+
+                    <div class="ui-field-contain">
+                        <label for="newDimension">Dimensions in square meters: </label>
+                        <input type="number" id="newDimension" name="newDimension" data-clear-btn="true">
+                    </div>
+                    
+                    <div class="ui-field-contain">
+                        <label for="newDatetime">Date and time: </label>
+                        <input disabled="disabled" type="text" id="newDatetime" name="newDatetime">
+                    </div>
+                    
+                    <div class="ui-field-contain">
+                        <label for="newFeature">Storage feature: </label>
+                        <select multiple="multiple" data-native-menu="false" id="newFeature" name="newFeature">
+                                <option value="">Choices:</option>
+                                <option value="private space">Sharing private</option>
+                                <option value="share space">Share space</option>
+                                <option value="cctv">CCTV</option>
+                                <option value="air conditioning">Air conditioning</option>
+                                <option value="storage for short term">Storage for short term</option>
+                                <option value="storage for long term">Storage for long term</option>
+                                <option value="collect & delivery service">Collect & delivery service</option>
+                        </select>
+                    </div>
+                    
+                    <div class="ui-field-contain">
+                        <label for="newRent">Monthly rent price: </label>
+                        <input type="number" id="newRent" data-clear-btn="true" name="newRent">
+                    </div>
+                    
+                    <div class="ui-field-contain">
+                        <label for="newReporter">Name of the reporter: </label>
+                        <input type="text" id="newReporter" data-clear-btn="true" name="newReporter">
+                    </div>
+
+                    <div class="ui-field-contain">
+                        <label for="newNote">Note: </label>
+                        <textarea type="text" id="newNote" name="newNote"> </textarea>
+                    </div>
+
+                    <div class="ui-field-contain">
+                        <!-- <label for="txtId">Id: </label> -->
+                        <input disabled="disabled" type="hidden" id="_id" name="_id">
+                    </div>
+
+                    <label for="btUpdate"></label>
+                    <!-- <a class="ui-btn ui-icon-plus ui-btn-icon-left" id="btnUpdate" onclick="updateStorage()">Update</a> -->
+                    <button id="btUpdate">Update</button>
+                </div>
+            </form>
+        </div>
+    </div>    
+
+    <div data-role="dialog" id="vibratebeep">
+        <div data-role="header" data-position="fixed">
+            <h1>Vibrate</h1>
+        </div>
+        <div data-role="main" class="ui-content">
+            <div id="deviceready" class="blink">
+                <div class="ui-field-contain">
+                    <a class="ui-btn" href="#" onclick="playBeep(); return false;">Ring a bell</a>
+                </div>
+            <div class="ui-field-contain">
+                <a class="ui-btn" href="#" onclick="vibrate(); return false;">Vibrate</a>
+            </div>
+        </div>
+        </div>
+        <!-- <div data-role="footer" data-position="fixed">
+            <div data-role="navbar">
+                <ul>
+                    <li><a href="#addStoraged" data-role="button" >Add page</a></li>
+                    <li><a href="#loadStoraged" data-role="button" >Load page</a></li>
+                    <li><a href="#vibratebeep" data-role="button" >Vibrate</a></li>
+                </ul>
+            </div>
+        </div> -->
+    </div>
+
+    <!-- <script type="text/javascript" src="cordova.js"></script> -->
+    <script type="text/javascript" src="js/addStorage.js"></script>
+    <!-- <script type="text/javascript" src="js/vibrateBeep.js"></script> -->
+    <script type="text/javascript" src="js/databaseHdler.js"></script>
+    <script type="text/javascript" src="js/storageHandler.js"></script>
+    <script type="text/javascript" src="js/loadStorage.js"></script>
+    <script type="text/javascript" src="js/extract.js"></script>
+    <script type="text/javascript" src="js/UpdateStorage.js"></script>
+    <script type="text/javascript" src="js/AddNote.js"></script>
+
+    <!-- <script type="text/javascript">
+        app.initialize();
+    </script> -->
+    <!-- <script type="text/javascript">
+           document.addEventListener("deviceready", onDeviceReady, false);
+
+           function playBeep() {
+            navigator.notification.beep(500);
+        }
+
+
+        function vibrate() {
+            navigator.notification.vibrate(3000);
+
+        }
+    </script> -->
+</body>
+
+</html>
